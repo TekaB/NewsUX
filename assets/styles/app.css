@@ -1,7 +1,19 @@
+* {
+    --bg-color: #dad7cd;
+    --primary: #588157;
+    --primary-lighter: #a3b18a;
+    --primary--darker: #3a5a40;
+}
+
 body {
-    background-color: lightgray;
+    background-color: var(--bg-color);
     margin: 0;
     padding: 0;
     font-size: 16px;
     font-family: "Yu Gothic", sans-serif;
+}
+
+::selection {
+    color: var(--primary--darker);
+    background: var(--primary-lighter);
 }

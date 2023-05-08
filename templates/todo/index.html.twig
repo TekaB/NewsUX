@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="index">
+    {% for todo in todos %}
+        <div class="card">
+            <p class="card__title">{{ todo.title }}</p>
+            <p class="card__description">{{ todo.description }}</p>
+            <p class="card__date">{{ todo.dueAt ? todo.dueAt|date("d-m-y") : ''}}</p>
+            <div class="card__actions">
+                <turbo-frame id="editTodoPage">
+                    <a class="card__link-secondary" href="{{ path('app_todo_edit', {'id': todo.id}) }}">Modifier</a>
+                </turbo-frame>
+                <div><a class="card__link-primary" href="{{ path('app_todo_edit', {'id': todo.id}) }}">Terminé</a></div>
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <span>Rien à faire !</span>
+        </div>
+    {% endfor %}
+    </div>
+    <turbo-frame id="newTodoPage">
+        <a class="btn" href="{{ path('app_todo_new') }}">Nouveau todo</a>
+    </turbo-frame>
+{% endblock %}

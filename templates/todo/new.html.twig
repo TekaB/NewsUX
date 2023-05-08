@@ -1,0 +1,8 @@
+{% block body %}
+
+    <turbo-frame id="newTodoPage">
+        {{ include('todo/_form.html.twig') }}
+
+        <a href="{{ path('app_todo_index') }}">Annuler</a>
+    </turbo-frame>
+{% endblock %}
