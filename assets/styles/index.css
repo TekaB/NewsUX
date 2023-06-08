@@ -1,6 +1,7 @@
 .index {
+    padding-top: 9px;
     margin: 0 auto;
     width: 900px;
     display: grid;
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
 }

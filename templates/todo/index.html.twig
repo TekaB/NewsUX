@@ -1,26 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="index">
-    {% for todo in todos %}
-        <div class="card">
-            <p class="card__title">{{ todo.title }}</p>
-            <p class="card__description">{{ todo.description }}</p>
-            <p class="card__date">{{ todo.dueAt ? todo.dueAt|date("d-m-y") : ''}}</p>
-            <div class="card__actions">
-                <turbo-frame id="editTodoPage">
-                    <a class="card__link-secondary" href="{{ path('app_todo_edit', {'id': todo.id}) }}">Modifier</a>
-                </turbo-frame>
-                <div><a class="card__link-primary" href="{{ path('app_todo_edit', {'id': todo.id}) }}">Terminé</a></div>
+    <div class="index" id="todos">
+        {% for todo in todos %}
+            <turbo-frame id="todo_{{ todo.id }}">
+                <div class="card">
+                    <p class="card__title">
+                        {% if todo.isImportant %}
+                            <span style="color: red;">!!!</span>
+                        {% endif %}
+                        {{ todo.title }}
+                        {% if todo.isImportant %}
+                            <span style="color: red;">!!!</span>
+                        {% endif %}
+                    </p>
+                    <p class="card__description">{{ todo.description }}</p>
+                    <p class="card__date">{{ todo.dueAt ? 'À compléter pour le ' ~ todo.dueAt|date("d-m-y") : ''}}</p>
+                    <div class="card__actions">
+                        <a class="card__link-secondary" href="{{ path('app_todo_edit', {'id': todo.id}) }}">Modifier</a>
+                        {{ include('todo/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </turbo-frame>
+        {% else %}
+            <div>
+                <span>Rien à faire !</span>
             </div>
-        </div>
-    {% else %}
-        <div>
-            <span>Rien à faire !</span>
-        </div>
-    {% endfor %}
+        {% endfor %}
     </div>
     <turbo-frame id="newTodoPage">
-        <a class="btn" href="{{ path('app_todo_new') }}">Nouveau todo</a>
+        <a class="card__link-primary newtodoaction" href="{{ path('app_todo_new') }}">Nouveau todo</a>
     </turbo-frame>
+
 {% endblock %}

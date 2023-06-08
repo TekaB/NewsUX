@@ -1,16 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Todo{% endblock %}
-
 {% block body %}
-    <turbo-frame id="editTodoPage">
-        {{ include('todo/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-        <turbo-frame id="deleteTodoPage">
-            {{ include('todo/_delete_form.html.twig') }}
-        </turbo-frame>
-
-        <a href="{{ path('app_todo_index') }}">Annuler</a>
+    <turbo-frame id="todo_{{ todo.id }}">
+        <div class="card-edit">
+            {{ form_start(form) }}
+                <p class="card-edit__title">
+                    {{ form_widget(form.title) }}
+                </p>
+                <p class="card-edit__description">
+                    {{ form_widget(form.description) }}
+                </p>
+                <p class="card-edit__date">
+                    {{ form_label(form.due_at) }}
+                    {{ form_widget(form.due_at) }}
+                </p>
+            <p>
+                {{ form_label(form.isImportant) }}
+                {{ form_widget(form.isImportant) }}
+            </p>
+            <div class="card-edit__actions">
+                <button class="card-edit__update">Mettre à jour</button>
+                <a class="card-edit__cancel" href="{{ path('app_todo_index')}}">Annuler</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
     </turbo-frame>
-
 {% endblock %}

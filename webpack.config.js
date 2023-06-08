@@ -19,6 +19,7 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
     })
+    .enableSassLoader()
 ;
 
 module.exports = Encore.getWebpackConfig();

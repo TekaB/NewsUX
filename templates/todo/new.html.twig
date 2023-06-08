@@ -1,8 +1,26 @@
 {% block body %}
-
     <turbo-frame id="newTodoPage">
-        {{ include('todo/_form.html.twig') }}
-
-        <a href="{{ path('app_todo_index') }}">Annuler</a>
+        <div class="card-edit card-new">
+            {{ form_start(form) }}
+            <p class="card-edit__title">
+                {{ form_widget(form.title) }}
+            </p>
+            <p class="card-edit__description">
+                {{ form_widget(form.description) }}
+            </p>
+            <p class="card-edit__date">
+                {{ form_label(form.due_at) }}
+                {{ form_widget(form.due_at) }}
+            </p>
+            <p>
+                {{ form_label(form.isImportant) }}
+                {{ form_widget(form.isImportant) }}
+            </p>
+            <div class="card-edit__actions">
+                <button class="card-edit__update">Ajouter</button>
+                <a class="card-edit__cancel" href="{{ path('app_todo_index')}}">Annuler</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
     </turbo-frame>
 {% endblock %}

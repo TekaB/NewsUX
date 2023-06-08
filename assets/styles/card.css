@@ -2,6 +2,7 @@
     padding: 9px;
     border-radius: 9px;
     background-color: #EEE;
+    margin-bottom: 9px;
 }
 
 .card__title {
@@ -42,4 +43,65 @@
     justify-content: end;
     align-items: center;
     user-select: none;
+}
+
+.card-edit {
+    padding: 9px;
+    border-radius: 9px;
+    background-color: #EEE;
+    margin-bottom: 9px;
+}
+
+.card-edit__title > input {
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary-lighter);
+    border-radius: 9px;
+    font-size: 21px;
+}
+
+.card-edit__description > textarea {
+    width: 100%;
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary-lighter);
+    font-size: 16px;
+}
+
+.card-edit__date > input {
+    color: var(--primary);
+    border: 1px solid var(--primary-lighter);
+    font-size: 16px;
+}
+
+.card-edit__cancel {
+    background-color: red;
+    color: white;
+    padding: 3px 6px;
+    border-radius: 9px;
+}
+
+.card-edit__actions {
+    display: flex;
+    justify-content: end;
+}
+
+.card-edit__update {
+    border: 1px solid var(--primary-lighter);
+    color: white;
+    background-color: var(--primary-lighter);
+    font-size: 16px;
+    border-radius: 9px;
+    margin-right: 9px;
+}
+
+.card-new {
+    width: 460px;
+    position: sticky;
+    bottom: 50px;
+}
+
+.newtodoaction {
+    position: sticky;
+    bottom: 50px;
 }

@@ -1,0 +1,23 @@
+<turbo-stream action="append" target="todos">
+    <template>
+        <turbo-frame id="todo_{{ todo.id }}">
+            <div class="card">
+                <p class="card__title">
+                    {% if todo.isImportant %}
+                        <span style="color: red;">!!!</span>
+                    {% endif %}
+                    {{ todo.title }}
+                    {% if todo.isImportant %}
+                        <span style="color: red;">!!!</span>
+                    {% endif %}
+                </p>
+                <p class="card__description">{{ todo.description }}</p>
+                <p class="card__date">{{ todo.dueAt ? 'À compléter pour le ' ~ todo.dueAt|date("d-m-y") : ''}}</p>
+                <div class="card__actions">
+                    <a class="card__link-secondary" href="{{ path('app_todo_edit', {'id': todo.id}) }}">Modifier</a>
+                    <a class="card__link-primary" href="{{ path('app_todo_edit', {'id': todo.id}) }}">Terminé</a>
+                </div>
+            </div>
+        </turbo-frame>
+    </template>
+</turbo-stream>
